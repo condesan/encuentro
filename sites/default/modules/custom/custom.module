@@ -1,0 +1,26 @@
+<?php
+
+/**
+ * agrega las ponencias relacionadas a la vista de texto completo de una sesión
+ */
+ 
+ function custom_nodeapi(&$node, $op, $a3 = NULL, $a4 = NULL) {
+  switch ($op) {
+			case 'view':
+			if($node->type == 'sesion'){
+						$sql = "SELECT nid FROM {content_field_sesiones} WHERE field_sesiones_nid = '%s'";
+						$query = db_query($sql, $node->nid);
+						while($data = db_fetch_object($query)){
+								$node = node_load($data->nid);
+								$nodes[] = l($node->title, 'node/' . $node->nid);
+							}
+							$items = theme('item_list', $nodes);
+						$node->content['sesiones'] = array(
+							'#value' => $items,
+							'#weight' => 10,
+						);
+					}
+				break;
+			}
+  }
+	
