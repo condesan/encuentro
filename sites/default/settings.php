@@ -89,7 +89,7 @@
  *   $db_url = 'mysqli://username:password@localhost/databasename';
  *   $db_url = 'pgsql://username:password@localhost/databasename';
  */
-$db_url = 'mysqli://root:123456@localhost/encuentrodb';
+$db_url = 'mysql://devcond_admin:admin@localhost/devcond_encuentro';
 $db_prefix = 'encuentrodb_';
 
 /**
